@@ -27,7 +27,7 @@ void loop() {
       buttonState = reading;
 
       // only toggle the LED if the new button state is HIGH
-      if (buttonState == LOW) {
+      if (buttonState == HIGH) {
         ledState = !ledState;
       }
     }
