@@ -1,0 +1,3 @@
+1. stopwatch -> tombol : start, pause, reset
+2. timer -> tombol : start, pause, reset, clear
+3. traffic light -> 3 orang buat sistem perempatan/pertigaan, cara kerja sesuai aslinya
