@@ -2,19 +2,19 @@
 
 // Definisikan pin tombol dan LCD
 // Asumsi tombol terhubung ke VCC (HIGH saat ditekan)
-#define Pb1 22 // Start/Resume
-#define Pb2 24 // Pause
-#define Pb3 26 // Reset
+#define Pb1 22  // Start/Resume
+#define Pb2 24  // Pause
+#define Pb3 26  // Reset
 
 const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
 LiquidCrystal lcd(rs, en, d4, d5,
                   d6, d7);
 
 // Variabel status dan waktu
-bool isRunning = false;++
-unsigned long startTime = 0;   // Waktu saat stopwatch mulai/resume (nilai millis())
-unsigned long elapsedTime = 0; // Waktu kumulatif yang berlalu saat di-pause/stopped
-unsigned long displayedTime = 0; // Waktu yang ditampilkan
+bool isRunning = false;
+unsigned long startTime = 0;      // Waktu saat stopwatch mulai/resume (nilai millis())
+unsigned long elapsedTime = 0;    // Waktu kumulatif yang berlalu saat di-pause/stopped
+unsigned long displayedTime = 0;  // Waktu yang ditampilkan
 
 // Variabel untuk debouncing (deteksi tekan tombol)
 bool prevStartButton = LOW;
@@ -72,12 +72,12 @@ void setup() {
   pinMode(Pb1, INPUT);
   pinMode(Pb2, INPUT);
   pinMode(Pb3, INPUT);
-  lcd.begin(16, 2); // 16 kolom, 2 baris
-  
-  lcd.setCursor(0, 0);          //  Tampilan Awal
-  lcd.print("STOPWATCH MS");    //  Tampilan Awal
-  lcd.setCursor(0, 1);          //  Tampilan Awal
-  lcd.print("Ready");           //  Tampilan Awal
+  lcd.begin(16, 2);  // 16 kolom, 2 baris
+
+  lcd.setCursor(0, 0);        //  Tampilan Awal
+  lcd.print("STOPWATCH MS");  //  Tampilan Awal
+  lcd.setCursor(0, 1);        //  Tampilan Awal
+  lcd.print("Ready");         //  Tampilan Awal
 }
 
 // --- LOOP UTAMA ---
@@ -92,15 +92,15 @@ void loop() {
   // Ini mencegah fungsi dipanggil berkali-kali saat tombol ditahan
   if (startBtn == HIGH && prevStartButton == LOW) {
     start_resume();
-    delay(50); // Debounce
+    delay(50);  // Debounce
   }
   if (pausedBtn == HIGH && prevPauseButton == LOW) {
     pause_stop();
-    delay(50); // Debounce
+    delay(50);  // Debounce
   }
   if (resetBtn == HIGH && prevResetButton == LOW) {
     reset_stop();
-    delay(50); // Debounce
+    delay(50);  // Debounce
   }
 
   // Simpan status tombol saat ini untuk perulangan berikutnya
@@ -133,5 +133,5 @@ void loop() {
   lcd.print(":");
   if (milliseconds < 10) lcd.print("0");
   lcd.print(milliseconds);
-  lcd.print(" "); // Hapus karakter sisa
+  lcd.print(" ");  // Hapus karakter sisa
 }
